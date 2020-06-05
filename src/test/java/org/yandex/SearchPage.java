@@ -20,7 +20,7 @@ public class SearchPage {
     @FindBy(xpath = "//*[contains(@class, 'button mini-suggest__button button_theme_websearch')]")
     private WebElement searchButton;
 
-    @FindBy(css = ".bno > h2:nth-child(1) > a:nth-child(2)")
+    @FindBy(xpath = "//a[contains(@class, 'link link_theme_outer') and contains(@href, 'https://mail.yandex.ru/')]")
     private WebElement result;
 
 

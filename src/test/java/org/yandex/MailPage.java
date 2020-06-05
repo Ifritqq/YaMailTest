@@ -3,19 +3,21 @@ package org.yandex;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MailPage {
 
     public WebDriver driver;
+    public static Actions actions;
 
     public MailPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    @FindBy(xpath = "//*[contains(@data-reactid, '101')]")
+    @FindBy(xpath = "//a[last()][contains(@class, 'FooterButtons')]")
     private WebElement mailEnterButtonOutside;
 
     @FindBy(tagName = "body")
@@ -24,13 +26,16 @@ public class MailPage {
     @FindBy(xpath = "//*[contains(@id, 'passp-field-login')]")
     private WebElement loginInputArea;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/form/div[3]/button[1]")
+    @FindBy(xpath = "//*[contains(@class,'passp-button passp-sign-in-button')]")
     private WebElement mailEnterInside;
 
     @FindBy(xpath = "//*[contains(@class, 'passp-form-field__error')]")
     private WebElement errorLogin;
 
+
     public void pushEnterOutsideButton() {
+        actions = new Actions(driver);
+        actions.moveToElement(mailEnterButtonOutside).build().perform();
         mailEnterButtonOutside.click();
     }
 

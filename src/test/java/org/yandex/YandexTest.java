@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class YandexTest {
 
     public static SearchPage searchPage;
@@ -24,7 +23,6 @@ public class YandexTest {
 
     @BeforeAll()
     public static void setup() {
-
         driver = new ChromeDriver();
         searchPage = new SearchPage(driver);
         mailPage = new MailPage(driver);
@@ -32,7 +30,6 @@ public class YandexTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("loginpage"));
         rndStrLog = ConfProperties.getRandString();
-
     }
 
     @Test
@@ -48,7 +45,6 @@ public class YandexTest {
         mailPage.clickEnterButtonInside();
 
         assertEquals(mailPage.loginError(), errorText);
-
     }
 
     @AfterAll()
